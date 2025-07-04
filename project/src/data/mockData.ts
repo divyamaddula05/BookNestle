@@ -1,0 +1,533 @@
+import { Book, User, Order, Address, WishlistItem } from '../types';
+
+export const mockBooks: Book[] = [
+  {
+    id: '1',
+    title: 'The Midnight Library',
+    author: 'Matt Haig',
+    genre: 'Fiction',
+    description: 'Between life and death there is a library, and within that library, the shelves go on forever. Every book provides a chance to try another life you could have lived.',
+    price: 24.99,
+    originalPrice: 29.99,
+    image: 'https://images.pexels.com/photos/1130980/pexels-photo-1130980.jpeg',
+    rating: 4.8,
+    reviewCount: 2847,
+    isbn: '978-0525559474',
+    publishedDate: '2020-08-13',
+    pages: 288,
+    availability: 'in-stock',
+    featured: true,
+    bestseller: true,
+    sellerId: 'seller-1',
+    sellerName: 'BookWorld Store',
+    stock: 25,
+  },
+  {
+    id: '2',
+    title: 'Atomic Habits',
+    author: 'James Clear',
+    genre: 'Self-Help',
+    description: 'An Easy & Proven Way to Build Good Habits & Break Bad Ones. Tiny changes, remarkable results.',
+    price: 18.99,
+    image: 'https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg',
+    rating: 4.9,
+    reviewCount: 5231,
+    isbn: '978-0735211292',
+    publishedDate: '2018-10-16',
+    pages: 320,
+    availability: 'in-stock',
+    bestseller: true,
+    sellerId: 'seller-2',
+    sellerName: 'Knowledge Hub',
+    stock: 15,
+  },
+  {
+    id: '3',
+    title: 'Dune',
+    author: 'Frank Herbert',
+    genre: 'Science Fiction',
+    description: 'Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world.',
+    price: 16.99,
+    originalPrice: 19.99,
+    image: 'https://images.pexels.com/photos/1148399/pexels-photo-1148399.jpeg',
+    rating: 4.7,
+    reviewCount: 8947,
+    isbn: '978-0441172719',
+    publishedDate: '1965-08-01',
+    pages: 688,
+    availability: 'in-stock',
+    featured: true,
+    sellerId: 'seller-1',
+    sellerName: 'BookWorld Store',
+    stock: 8,
+  },
+  {
+    id: '4',
+    title: 'The Psychology of Money',
+    author: 'Morgan Housel',
+    genre: 'Finance',
+    description: 'Timeless lessons on wealth, greed, and happiness doing well with money isn\'t necessarily about what you know.',
+    price: 22.99,
+    image: 'https://images.pexels.com/photos/1741230/pexels-photo-1741230.jpeg',
+    rating: 4.6,
+    reviewCount: 3421,
+    isbn: '978-0857197689',
+    publishedDate: '2020-09-08',
+    pages: 256,
+    availability: 'in-stock',
+    sellerId: 'seller-3',
+    sellerName: 'Finance Books Co',
+    stock: 12,
+  },
+  {
+    id: '5',
+    title: 'The Seven Husbands of Evelyn Hugo',
+    author: 'Taylor Jenkins Reid',
+    genre: 'Romance',
+    description: 'Reclusive Hollywood icon Evelyn Hugo is finally ready to tell the truth about her glamorous and scandalous life.',
+    price: 19.99,
+    image: 'https://images.pexels.com/photos/1029141/pexels-photo-1029141.jpeg',
+    rating: 4.8,
+    reviewCount: 12456,
+    isbn: '978-1501161933',
+    publishedDate: '2017-06-13',
+    pages: 400,
+    availability: 'limited',
+    featured: true,
+    sellerId: 'seller-2',
+    sellerName: 'Knowledge Hub',
+    stock: 3,
+  },
+  {
+    id: '6',
+    title: 'Educated',
+    author: 'Tara Westover',
+    genre: 'Biography',
+    description: 'A memoir about a young girl who, kept out of school, leaves her survivalist family and goes on to earn a PhD from Cambridge University.',
+    price: 21.99,
+    originalPrice: 26.99,
+    image: 'https://images.pexels.com/photos/1642228/pexels-photo-1642228.jpeg',
+    rating: 4.7,
+    reviewCount: 6789,
+    isbn: '978-0399590504',
+    publishedDate: '2018-02-20',
+    pages: 334,
+    availability: 'in-stock',
+    bestseller: true,
+    sellerId: 'seller-1',
+    sellerName: 'BookWorld Store',
+    stock: 18,
+  },
+  {
+    id: '7',
+    title: 'The Silent Patient',
+    author: 'Alex Michaelides',
+    genre: 'Mystery',
+    description: 'A woman\'s act of violence against her husband and her refusal to speak sends a psychotherapist down a path of discovery.',
+    price: 17.99,
+    image: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg',
+    rating: 4.5,
+    reviewCount: 4523,
+    isbn: '978-1250301697',
+    publishedDate: '2019-02-05',
+    pages: 336,
+    availability: 'in-stock',
+    sellerId: 'seller-3',
+    sellerName: 'Finance Books Co',
+    stock: 20,
+  },
+  {
+    id: '8',
+    title: 'Klara and the Sun',
+    author: 'Kazuo Ishiguro',
+    genre: 'Literary Fiction',
+    description: 'From her place in the store, Klara, an artificial friend with outstanding observational qualities, watches carefully the behavior of those who come in.',
+    price: 23.99,
+    image: 'https://images.pexels.com/photos/1030693/pexels-photo-1030693.jpeg',
+    rating: 4.4,
+    reviewCount: 2134,
+    isbn: '978-0593318188',
+    publishedDate: '2021-03-02',
+    pages: 320,
+    availability: 'in-stock',
+    sellerId: 'seller-2',
+    sellerName: 'Knowledge Hub',
+    stock: 10,
+  },
+];
+
+export const mockAddresses: Address[] = [
+  {
+    id: 'addr-1',
+    label: 'Home',
+    name: 'Sarah Johnson',
+    street: '123 Literary Lane',
+    apartment: 'Apt 4B',
+    city: 'Reading',
+    state: 'CA',
+    zipCode: '90210',
+    country: 'US',
+    phone: '+1 (555) 123-4567',
+    isDefault: true,
+  },
+  {
+    id: 'addr-2',
+    label: 'Work',
+    name: 'Sarah Johnson',
+    street: '456 Business Blvd',
+    city: 'Reading',
+    state: 'CA',
+    zipCode: '90211',
+    country: 'US',
+    phone: '+1 (555) 987-6543',
+    isDefault: false,
+  },
+];
+
+// Function to generate avatar based on name initials
+const generateAvatar = (name: string): string => {
+  const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+  const colors = [
+    '#3B82F6', '#10B981', '#8B5CF6', '#EC4899', 
+    '#6366F1', '#EF4444', '#F59E0B', '#14B8A6'
+  ];
+  const colorIndex = name.length % colors.length;
+  const color = colors[colorIndex];
+  
+  // Create a simple data URL for the avatar
+  return `data:image/svg+xml;base64,${btoa(`
+    <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="${color}"/>
+      <text x="50" y="50" font-family="Arial" font-size="36" font-weight="bold" 
+            text-anchor="middle" dominant-baseline="middle" fill="white">
+        ${initials}
+      </text>
+    </svg>
+  `)}`;
+};
+
+export const mockUsers: User[] = [
+  // Regular Users
+  {
+    id: 'user-1',
+    name: 'Sarah Johnson',
+    email: 'sarah@bookeasy.com',
+    avatar: generateAvatar('Sarah Johnson'),
+    role: 'user',
+    addresses: mockAddresses,
+    defaultAddressId: 'addr-1',
+    preferences: {
+      favoriteGenres: ['Fiction', 'Mystery', 'Self-Help'],
+      notifications: true,
+    },
+    joinDate: '2024-01-15T10:30:00Z',
+    totalOrders: 5,
+    totalSpent: 125.50,
+  },
+  {
+    id: 'user-2',
+    name: 'John Smith',
+    email: 'john@bookeasy.com',
+    avatar: generateAvatar('John Smith'),
+    role: 'user',
+    addresses: [
+      {
+        id: 'addr-4',
+        label: 'Home',
+        name: 'John Smith',
+        street: '456 Novel Street',
+        city: 'Booktown',
+        state: 'NY',
+        zipCode: '10001',
+        country: 'US',
+        phone: '+1 (555) 234-5678',
+        isDefault: true,
+      },
+    ],
+    defaultAddressId: 'addr-4',
+    preferences: {
+      favoriteGenres: ['Science Fiction', 'Biography', 'History'],
+      notifications: false,
+    },
+    joinDate: '2024-02-20T14:22:00Z',
+    totalOrders: 3,
+    totalSpent: 89.97,
+  },
+  {
+    id: 'user-3',
+    name: 'Emily Davis',
+    email: 'emily@bookeasy.com',
+    avatar: generateAvatar('Emily Davis'),
+    role: 'user',
+    addresses: [
+      {
+        id: 'addr-5',
+        label: 'Home',
+        name: 'Emily Davis',
+        street: '789 Story Avenue',
+        city: 'Readerville',
+        state: 'TX',
+        zipCode: '75001',
+        country: 'US',
+        phone: '+1 (555) 345-6789',
+        isDefault: true,
+      },
+    ],
+    defaultAddressId: 'addr-5',
+    preferences: {
+      favoriteGenres: ['Romance', 'Literary Fiction', 'Poetry'],
+      notifications: true,
+    },
+    joinDate: '2024-03-10T09:15:00Z',
+    totalOrders: 7,
+    totalSpent: 156.23,
+  },
+
+  // Sellers
+  {
+    id: 'seller-1',
+    name: 'Michael Chen',
+    email: 'michael@bookworld.com',
+    avatar: generateAvatar('Michael Chen'),
+    role: 'seller',
+    businessName: 'BookWorld Store',
+    addresses: [
+      {
+        id: 'addr-6',
+        label: 'Business',
+        name: 'Michael Chen',
+        street: '100 Commerce Street',
+        city: 'Business City',
+        state: 'CA',
+        zipCode: '90210',
+        country: 'US',
+        phone: '+1 (555) 111-2222',
+        isDefault: true,
+      },
+    ],
+    defaultAddressId: 'addr-6',
+    preferences: {
+      favoriteGenres: ['Fiction', 'Science Fiction'],
+      notifications: true,
+    },
+    isApproved: true,
+    joinDate: '2023-12-01T08:00:00Z',
+  },
+  {
+    id: 'seller-2',
+    name: 'Lisa Rodriguez',
+    email: 'lisa@knowledgehub.com',
+    avatar: generateAvatar('Lisa Rodriguez'),
+    role: 'seller',
+    businessName: 'Knowledge Hub',
+    addresses: [
+      {
+        id: 'addr-7',
+        label: 'Store',
+        name: 'Lisa Rodriguez',
+        street: '200 Education Blvd',
+        city: 'Learning City',
+        state: 'NY',
+        zipCode: '10002',
+        country: 'US',
+        phone: '+1 (555) 333-4444',
+        isDefault: true,
+      },
+    ],
+    defaultAddressId: 'addr-7',
+    preferences: {
+      favoriteGenres: ['Self-Help', 'Biography', 'Finance'],
+      notifications: true,
+    },
+    isApproved: true,
+    joinDate: '2024-01-05T12:30:00Z',
+  },
+  {
+    id: 'seller-3',
+    name: 'David Wilson',
+    email: 'david@financebooks.com',
+    avatar: generateAvatar('David Wilson'),
+    role: 'seller',
+    businessName: 'Finance Books Co',
+    addresses: [
+      {
+        id: 'addr-8',
+        label: 'Office',
+        name: 'David Wilson',
+        street: '300 Money Street',
+        city: 'Finance City',
+        state: 'TX',
+        zipCode: '75002',
+        country: 'US',
+        phone: '+1 (555) 555-6666',
+        isDefault: true,
+      },
+    ],
+    defaultAddressId: 'addr-8',
+    preferences: {
+      favoriteGenres: ['Finance', 'Biography', 'Self-Help'],
+      notifications: false,
+    },
+    isApproved: false, // Pending approval
+    joinDate: '2024-03-15T16:45:00Z',
+  },
+
+  // Admin
+  {
+    id: 'admin-1',
+    name: 'Admin User',
+    email: 'admin@bookeasy.com',
+    avatar: generateAvatar('Admin User'),
+    role: 'admin',
+    addresses: [
+      {
+        id: 'addr-9',
+        label: 'Office',
+        name: 'Admin User',
+        street: '1 Admin Plaza',
+        city: 'Admin City',
+        state: 'CA',
+        zipCode: '90000',
+        country: 'US',
+        phone: '+1 (555) 000-0000',
+        isDefault: true,
+      },
+    ],
+    defaultAddressId: 'addr-9',
+    preferences: {
+      favoriteGenres: ['All'],
+      notifications: true,
+    },
+    joinDate: '2023-01-01T00:00:00Z',
+  },
+];
+
+// Demo login credentials
+export const demoCredentials = [
+  // Users
+  {
+    email: 'sarah@bookeasy.com',
+    password: 'password123',
+    user: mockUsers[0],
+  },
+  {
+    email: 'john@bookeasy.com',
+    password: 'password123',
+    user: mockUsers[1],
+  },
+  {
+    email: 'emily@bookeasy.com',
+    password: 'password123',
+    user: mockUsers[2],
+  },
+  // Sellers
+  {
+    email: 'michael@bookworld.com',
+    password: 'seller123',
+    user: mockUsers[3],
+  },
+  {
+    email: 'lisa@knowledgehub.com',
+    password: 'seller123',
+    user: mockUsers[4],
+  },
+  {
+    email: 'david@financebooks.com',
+    password: 'seller123',
+    user: mockUsers[5],
+  },
+  // Admin
+  {
+    email: 'admin@bookeasy.com',
+    password: 'admin123',
+    user: mockUsers[6],
+  },
+];
+
+export const mockOrders: Order[] = [
+  {
+    id: 'order-1',
+    userId: 'user-1',
+    sellerId: 'seller-1',
+    items: [
+      { book: mockBooks[0], quantity: 1 },
+      { book: mockBooks[1], quantity: 2 },
+    ],
+    total: 62.97,
+    status: 'delivered',
+    orderDate: '2024-01-15T10:30:00Z',
+    estimatedDelivery: '2024-01-20T09:00:00Z',
+    shippingAddress: mockAddresses[0],
+    paymentMethod: 'Credit Card ending in 4532',
+  },
+  {
+    id: 'order-2',
+    userId: 'user-1',
+    sellerId: 'seller-2',
+    items: [
+      { book: mockBooks[2], quantity: 1 },
+    ],
+    total: 16.99,
+    status: 'shipped',
+    orderDate: '2024-01-25T14:22:00Z',
+    estimatedDelivery: '2024-01-30T12:00:00Z',
+    shippingAddress: mockAddresses[1],
+    paymentMethod: 'Google Pay',
+  },
+  {
+    id: 'order-3',
+    userId: 'user-2',
+    sellerId: 'seller-1',
+    items: [
+      { book: mockBooks[3], quantity: 1 },
+      { book: mockBooks[4], quantity: 1 },
+    ],
+    total: 42.98,
+    status: 'confirmed',
+    orderDate: '2024-03-01T11:15:00Z',
+    estimatedDelivery: '2024-03-05T10:00:00Z',
+    shippingAddress: {
+      id: 'addr-4',
+      label: 'Home',
+      name: 'John Smith',
+      street: '456 Novel Street',
+      city: 'Booktown',
+      state: 'NY',
+      zipCode: '10001',
+      country: 'US',
+      phone: '+1 (555) 234-5678',
+      isDefault: true,
+    },
+    paymentMethod: 'Cash on Delivery',
+  },
+];
+
+export const mockWishlist: WishlistItem[] = [
+  {
+    id: 'wish-1',
+    userId: 'user-1',
+    book: mockBooks[5],
+    addedDate: '2024-02-15T10:30:00Z',
+  },
+  {
+    id: 'wish-2',
+    userId: 'user-1',
+    book: mockBooks[7],
+    addedDate: '2024-02-20T14:22:00Z',
+  },
+];
+
+export const genres = [
+  'All',
+  'Fiction',
+  'Science Fiction',
+  'Mystery',
+  'Romance',
+  'Self-Help',
+  'Biography',
+  'Finance',
+  'Literary Fiction',
+  'History',
+  'Philosophy',
+  'Poetry',
+];
